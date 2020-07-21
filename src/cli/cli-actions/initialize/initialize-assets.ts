@@ -79,7 +79,7 @@ export const createCloudFormationContents = (appName: string) => {
     AWSTemplateFormatVersion: '2010-09-09',
     Transform: 'AWS::Serverless-2016-10-31',
     Description:
-      'An AWS Serverless API for managing canary deployments for LCS UI',
+      'An AWS Serverless API',
     Parameters: {
       Environment: {
         Type: 'String',
