@@ -227,7 +227,7 @@ export const createTagsFileContents = (appName: string) => {
 
 export const createLambdaEntryPoint = () => {
   return `import { AppModule } from './app.module';
-import { createExpressHandler } from 'nest-aws-serverless-tools';
+import { createExpressHandler } from '@aws-serverless-tools/nest';
 
 export const handler = createExpressHandler(AppModule);`;
 };

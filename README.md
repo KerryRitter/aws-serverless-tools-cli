@@ -6,7 +6,7 @@ In alpha mode. Maybe pre-alpha. Docs coming soon.
 
 ### Installation
 
-`npm install -g nest-aws-serverless-tools`
+`npm install -g @aws-serverless-tools/cli`
 
 ### Basic Use
 
