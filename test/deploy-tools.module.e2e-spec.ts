@@ -7,7 +7,7 @@ describe('DeployToolsModule (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [DeployToolsModule],
     }).compile();
-    
+
     expect(moduleFixture.get(NpmService)).toBeTruthy();
   });
 });

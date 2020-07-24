@@ -2,7 +2,7 @@ import cli from 'cli-ux';
 import { Subject } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { exec } from 'child_process';
-const cfnDeploy = require('cfn-deploy');
+import * as cfnDeploy from 'cfn-deploy';
 
 export interface CloudFormationDeployEvent {
   status: 'started' | 'progress' | 'error' | 'complete';
@@ -46,7 +46,7 @@ export class CloudFormationService {
   }
 
   deploy(options: CloudFormationDeployOptions) {
-    const eventStream = cfnDeploy(options);
+    const eventStream = cfnDeploy.default(options);
 
     const progress = new Subject<CloudFormationDeployEvent>();
 
@@ -96,7 +96,7 @@ export class CloudFormationService {
   }
 
   private runCommand(cmd: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       exec(cmd, (error, stdout, stderr) => {
         if (error) {
           console.warn(error);

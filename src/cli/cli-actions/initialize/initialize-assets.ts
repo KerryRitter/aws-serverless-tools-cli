@@ -78,8 +78,7 @@ export const createCloudFormationContents = (appName: string) => {
   const cfn = {
     AWSTemplateFormatVersion: '2010-09-09',
     Transform: 'AWS::Serverless-2016-10-31',
-    Description:
-      'An AWS Serverless API',
+    Description: 'An AWS Serverless API',
     Parameters: {
       Environment: {
         Type: 'String',
@@ -213,7 +212,7 @@ export const createParametersFileContents = (env: string) => {
       ParameterKey: 'Environment',
       ParameterValue: env,
     },
-  ] as Array<{ ParameterKey: string, ParameterValue: string}>);
+  ] as Array<{ ParameterKey: string; ParameterValue: string }>);
 };
 
 export const createTagsFileContents = (appName: string) => {

@@ -23,7 +23,7 @@ export class InitializeActionService {
 
   private async initializeNestExpress() {
     const options = await this.getOptions();
-    await this.scaffoldCfn(options);    
+    await this.scaffoldCfn(options);
     await this.installPackages();
     await this.updateNestPackageJsonConfig(options.appName);
   }
@@ -45,11 +45,11 @@ export class InitializeActionService {
   }
 
   private async scaffoldCfn(options: {
-    appName: string,
-    stackName: string,
-    region: string,
-    profile: string,
-    resourceBucket: string,
+    appName: string;
+    stackName: string;
+    region: string;
+    profile: string;
+    resourceBucket: string;
   }) {
     this.fileService.createDirectory(this.fileService.getCwdPath('cfn'));
 
@@ -76,7 +76,10 @@ export class InitializeActionService {
         join('cfn', 'parameters-dev.json'),
         assets.createParametersFileContents('dev'),
       ],
-      [join('cfn', 'tags.json'), assets.createTagsFileContents(options.appName)],
+      [
+        join('cfn', 'tags.json'),
+        assets.createTagsFileContents(options.appName),
+      ],
       [join('src', 'lambda-entry-point.ts'), assets.createLambdaEntryPoint()],
     ];
 
@@ -96,7 +99,7 @@ export class InitializeActionService {
       `aws-lambda@^1.0.6`,
       `aws-serverless-express@^3.3.8`,
       `@nestjs/common@^7.0.0`,
-      "@nestjs/config@^0.5.0",
+      '@nestjs/config@^0.5.0',
       `@nestjs/core@^7.0.0`,
       `@nestjs/platform-express@^7.3.2`,
       `@nestjs/swagger@^4.5.12`,
@@ -106,10 +109,10 @@ export class InitializeActionService {
     await this.npm.installPackages(packages, 'save');
     cli.action.stop('Install complete!');
 
-    const devPackages = [
-      `@aws-serverless-tools/cli`,
-    ];
-    cli.action.start(`Running "npm install --save-dev ${devPackages.join(' ')}"...`);
+    const devPackages = [`@aws-serverless-tools/cli`];
+    cli.action.start(
+      `Running "npm install --save-dev ${devPackages.join(' ')}"...`,
+    );
     await this.npm.installPackages(devPackages, 'save-dev');
     cli.action.stop('Install complete!');
   }
@@ -131,7 +134,7 @@ export class InitializeActionService {
     this.npm.addTopLevelConfig('cfnLambdaParamsConfig', {
       cfnFilePath: './cfn/cloudformation.yaml',
       lambdaResourceName: `${appName}Lambda`,
-      parametersFilePath: "./cfn/parameters-dev.json"
+      parametersFilePath: './cfn/parameters-dev.json',
     });
     cli.action.start('Completed package.json update!');
   }
