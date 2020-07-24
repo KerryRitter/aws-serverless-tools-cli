@@ -15,7 +15,7 @@ describe('InitializeActionService', () => {
             installPackages: () => null,
             addScript: () => null,
             addTopLevelConfig: () => null,
-          }
+          },
         },
         {
           provide: FileSystemService,
@@ -23,8 +23,8 @@ describe('InitializeActionService', () => {
             createDirectory: () => null,
             getCwdPath: () => null,
             writeFile: () => null,
-          }
-        }
+          },
+        },
       ],
     }).compile();
 
